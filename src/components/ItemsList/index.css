@@ -1,0 +1,19 @@
+.list-menu-items {
+  list-style-type: none;
+}
+
+.mennu-buttons {
+  background-color: transparent;
+  border-width: 0px;
+  color: black;
+  font-family: Roboto;
+  font-size: 25px;
+}
+
+.menu-button {
+  background-color: transparent;
+  border-width: 0px;
+  color: #f44336;
+  font-family: Roboto;
+  font-size: 25px;
+}

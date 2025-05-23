@@ -2,18 +2,46 @@
   background-color: white;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(243,243,243);
-  box-shadow: 5px 5px 10px 10px white;
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
 }
 
 .nav-restro-heading {
   color: black;
   font-family: Roboto;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 500;
 }
 
+.cartCount {
+  background-color: #f44336;
+  color: white;
+  border-radius: 100px;
+  height: 20px;
+  width: 20px;
+  align-items: center;
+  padding-left: 5px;
+  margin-top: 20px;
+}
+
 .nav-cart-icon {
-  height: 40px;
-  width: 60px;
+  height: 20px;
+  width: 40px;
+  margin-bottom: 20px;
+}
+
+.cart-card-show {
+  display: flex;
+}
+
+.cart-count {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-restro-orders {
+  color: #263238;
+  font-family: Roboto;
+  font-size: 15px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
