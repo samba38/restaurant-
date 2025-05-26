@@ -21,7 +21,9 @@ const Products = props => {
     addCartItem(categoDetails)
   }
   const onDecreasing = () => {
-    removeCartIems(categoDetails)
+    if (cartItems.length !== 0) {
+      removeCartIems(categoDetails)
+    }
   }
   const qunatyPro = () => {
     const getQunatity = cartItems.find(eachItem => eachItem.dishId === dishId)

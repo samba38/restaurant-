@@ -1,4 +1,5 @@
 import './index.css'
+
 const ItemsList = props => {
   const {details, renderNewCategory, isThere} = props
   const {menuCategory, menuCategoryId} = details

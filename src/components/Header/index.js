@@ -4,7 +4,7 @@ import './index.css'
 const Header = props => {
   const {cartItems, headerCategory} = props
   const cartLength = cartItems.length
-  const {restaurantName, restaurantImage} = headerCategory
+  const {restaurantName} = headerCategory
   return (
     <nav className="nav-container">
       <h1 className="nav-restro-heading">{restaurantName}</h1>
