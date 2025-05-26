@@ -17,3 +17,27 @@
   font-family: Roboto;
   font-size: 25px;
 }
+
+@media screen and (max-width: 576px) {
+  .list-menu-items {
+    list-style-type: none;
+    flex-grow: 1;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .mennu-buttons {
+    background-color: transparent;
+    border-width: 0px;
+    color: black;
+    font-family: Roboto;
+    font-size: 15px;
+  }
+
+  .menu-button {
+    background-color: transparent;
+    border-width: 0px;
+    color: #f44336;
+    font-family: Roboto;
+    font-size: 15px;
+  }
+}

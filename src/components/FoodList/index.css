@@ -3,3 +3,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 576px) {
+  .unorder-menu-list {
+    display: flex;
+    overflow-x: scroll;
+    height: 20px;
+  }
+}

@@ -82,34 +82,131 @@
   font-weight: 500;
 }
 
-.type-card {
-  height: 50px;
-  width: 40px;
-  border: 1px solid green;
-  display: flex;
-  justify-content: center;
-  margin-right: 5px;
+.dish-type-2 {
+  border: 1px solid #00923f;
+  height: 35px;
+  margin: 5px;
 }
 
-.type-card-color {
-  height: 15px;
-  width: 15px;
-  border-radius: 100px;
-  background-color: green;
+.dish-type-round-2 {
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  background-color: #00923f;
+  margin: 4px;
 }
 
-.type-card2 {
-  height: 50px;
-  width: 40px;
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
-  margin-right: 5px;
+.dish-type-1 {
+  border: 1px solid #92282a;
+  height: 35px;
+  margin: 5px;
 }
 
-.type-card-color2 {
-  height: 15px;
-  width: 15px;
-  border-radius: 100px;
-  background-color: red;
+.dish-type-round-1 {
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  background-color: #92282a;
+  margin: 4px;
+}
+
+@media screen and (max-width: 576px) {
+  .list-food-items {
+    list-style-type: none;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+    height: 280px;
+    box-shadow: 0px 4px 16px 0px #bfbfbf;
+  }
+  .dish-type-2 {
+    border: 1px solid #00923f;
+    height: 25px;
+    margin: 5px;
+  }
+
+  .dish-type-round-2 {
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: #00923f;
+    margin: 4px;
+  }
+
+  .dish-type-1 {
+    border: 1px solid #92282a;
+    height: 25px;
+    margin: 5px;
+  }
+
+  .dish-type-round-1 {
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: #92282a;
+    margin: 4px;
+  }
+  .list-food-items-heading {
+    color: #424242;
+    font-family: Roboto;
+    font-size: 19px;
+    font-weight: 500;
+  }
+  .list-food-items-currency {
+    color: #616161;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .list-food-items-description {
+    color: #bdbdbd;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .cart-card {
+    background-color: #0d47a1;
+    height: 20px;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+    align-items: center;
+  }
+  .btn-cart {
+    background-color: transparent;
+    border-width: 0px;
+    margin: 5px;
+    color: white;
+  }
+
+  .btn-number {
+    color: white;
+  }
+  .list-food-items-Customizations {
+    color: #0d47a1;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 200;
+  }
+  .list-food-items-calories {
+    color: #f57f17;
+    font-family: Roboto;
+    font-size: 17px;
+    font-weight: 300;
+    margin-right: 50px;
+  }
+  .food-img {
+    height: 60px;
+    width: 80px;
+    margin-top: 10px;
+  }
+  .not-available {
+    color: red;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+  }
 }

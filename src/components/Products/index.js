@@ -1,4 +1,5 @@
 import './index.css'
+
 const Products = props => {
   const {categoDetails, cartItems, addCartItem, removeCartIems} = props
   const {
@@ -12,6 +13,7 @@ const Products = props => {
     addonCat,
     dishAvailability,
     dishType,
+    dishId,
   } = categoDetails
 
   const isAddon = addonCat.length === 0 ? '' : 'Customizations available'
@@ -19,8 +21,28 @@ const Products = props => {
     addCartItem(categoDetails)
   }
   const onDecreasing = () => {
-    addCartItem(categoDetails)
+    removeCartIems(categoDetails)
   }
+  const qunatyPro = () => {
+    const getQunatity = cartItems.find(eachItem => eachItem.dishId === dishId)
+    return getQunatity ? getQunatity.quantity : 0
+  }
+
+  const renderDishType = () => {
+    if (dishType > 1) {
+      return (
+        <div className="dish-type-2">
+          <div className="dish-type-round-2" />
+        </div>
+      )
+    }
+    return (
+      <div className="dish-type-1">
+        <div className="dish-type-round-1" />
+      </div>
+    )
+  }
+
   const renderCartBtn = () => {
     if (dishAvailability === true) {
       return (
@@ -29,27 +51,29 @@ const Products = props => {
             +
           </button>
           <p className="btn-number" type="button">
-            0
+            {qunatyPro()}
           </p>
           <button className="btn-cart" onClick={onDecreasing}>
             -
           </button>
         </div>
       )
-    } else {
-      return <p className="not-available"> Not available </p>
     }
+    return <p className="not-available"> Not available </p>
   }
   return (
     <li className="list-food-items">
-      <div>
-        <h1 className="list-food-items-heading">{dishName}</h1>
-        <p className="list-food-items-currency">
-          {dishCurrency} {dishPrice}
-        </p>
-        <p className="list-food-items-description">{dishDescription}</p>
-        {renderCartBtn()}
-        <p className="list-food-items-Customizations">{isAddon}</p>
+      <div className="sider-img">
+        {renderDishType()}
+        <div>
+          <h1 className="list-food-items-heading">{dishName}</h1>
+          <p className="list-food-items-currency">
+            {dishCurrency} {dishPrice}
+          </p>
+          <p className="list-food-items-description">{dishDescription}</p>
+          {renderCartBtn()}
+          <p className="list-food-items-Customizations">{isAddon}</p>
+        </div>
       </div>
       <div className="sider-img">
         <p className="list-food-items-calories">{dishCalories} calories</p>
