@@ -1,7 +1,13 @@
 import './index.css'
 
 const Products = props => {
-  const {categoDetails, cartItems, addCartItem, removeCartIems} = props
+  const {
+    categoDetails,
+    cartItems,
+    addCartItem,
+    removeCartIems,
+    cartLength,
+  } = props
   const {
     dishName,
     dishPrice,

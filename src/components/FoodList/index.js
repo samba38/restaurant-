@@ -17,6 +17,7 @@ class FoodList extends Component {
     categoriesOption: '',
     apiStatus: apiStatusConstants.initial,
     headerCategory: {},
+    cartLength: 0,
   }
 
   componentDidMount() {
@@ -80,14 +81,18 @@ class FoodList extends Component {
     const {cartItems} = this.state
 
     const isAlreadyExist = cartItems.find(item => item.dishId === dish.dishId)
-
     if (isAlreadyExist) {
       this.setState(prevState => ({
-        cartItems: prevState.cartItems.map(item =>
-          item.dishId === dish.dishId
-            ? {...item, quantity: (item.quantity || 1) + 1}
-            : item,
-        ),
+        cartItems: prevState.cartItems.map(eachCart => {
+          if (eachCart.dishId === dish.dishId) {
+            const upadetQunatity = eachCart.quantity + 1
+            return {
+              ...eachCart,
+              quantity: upadetQunatity,
+            }
+          }
+          return eachCart
+        }),
       }))
     } else {
       this.setState(prevState => ({
@@ -119,7 +124,7 @@ class FoodList extends Component {
   }
 
   renderProductDetails = () => {
-    const {productsList, categoriesOption, cartItems} = this.state
+    const {productsList, categoriesOption, cartItems, cartLength} = this.state
     const {categoryDishes} = productsList.find(
       eachCato => eachCato.menuCategoryId === categoriesOption,
     )
@@ -133,6 +138,7 @@ class FoodList extends Component {
             cartItems={cartItems}
             addCartItem={this.addCartItem}
             removeCartIems={this.removeCartIems}
+            cartLength={cartLength}
           />
         ))}
       </ul>
