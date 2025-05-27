@@ -3,7 +3,6 @@ import './index.css'
 
 const Header = props => {
   const {cartItems, headerCategory} = props
-  const cartLength = cartItems.length
   const {restaurantName} = headerCategory
   const productItemsCart = () =>
     cartItems.reduce((acc, item) => acc + item.quantity, 0)

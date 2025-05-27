@@ -1,20 +1,13 @@
 import './index.css'
 
 const Products = props => {
-  const {
-    categoDetails,
-    cartItems,
-    addCartItem,
-    removeCartIems,
-    cartLength,
-  } = props
+  const {categoDetails, cartItems, addCartItem, removeCartIems} = props
   const {
     dishName,
     dishPrice,
     dishDescription,
     dishCalories,
     dishImage,
-    nexturl,
     dishCurrency,
     addonCat,
     dishAvailability,
@@ -61,7 +54,7 @@ const Products = props => {
           <p className="btn-number" type="button">
             {qunatyPro()}
           </p>
-          <button className="btn-cart" onClick={onDecreasing}>
+          <button className="btn-cart" onClick={onDecreasing} type="button">
             -
           </button>
         </div>
@@ -85,7 +78,7 @@ const Products = props => {
       </div>
       <div className="sider-img">
         <p className="list-food-items-calories">{dishCalories} calories</p>
-        <img src={dishImage} className="food-img" />
+        <img src={dishImage} className="food-img" alt={dishName} />
       </div>
     </li>
   )
