@@ -1,0 +1,25 @@
+.cart-img {
+  height: 400px;
+  width: 700px;
+}
+
+.empty-cart-paragraph {
+  color: #0277bd;
+  font-family: Roboto;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.remove-all-carts {
+  color: #0277bd;
+  background-color: transparent;
+  border: none;
+  font-family: Roboto;
+  font-size: 18px;
+  align-self: center;
+}
+
+.unorder-cart-items-list {
+  display: flex;
+  flex-direction: column;
+}

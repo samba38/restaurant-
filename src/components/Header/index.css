@@ -4,6 +4,7 @@
   justify-content: space-between;
   box-shadow: 0px 4px 16px 0px #bfbfbf;
   width: 100vw;
+  padding: 20px;
 }
 
 .nav-restro-heading {
@@ -51,6 +52,28 @@
   margin-right: 20px;
   margin-top: 20px;
   display: flex;
+}
+.linker {
+  text-decoration: none;
+}
+
+.nav-lagout {
+  background-color: #1976d2;
+  color: white;
+  height: 35px;
+  width: 70px;
+  border-radius: 8px;
+  border-width: 0px;
+  align-items: center;
+  display: flex;
+  margin-right: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.cart-icon-btn{
+  background-color: transparent;
+  border: none;
 }
 
 @media screen and (max-width: 576px) {

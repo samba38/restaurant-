@@ -1,7 +1,16 @@
+import {useContext, useState} from 'react'
+import CartContext from '../../Context/CartContext'
 import './index.css'
 
 const Products = props => {
-  const {categoDetails, cartItems, addCartItem, removeCartIems} = props
+  const [quantity, setQunatity] = useState(0)
+  const {
+    addCartItem,
+    cartItems,
+    incrementCartItemQuantity,
+    decrementCartItemQuantity,
+  } = useContext(CartContext)
+  const {categoDetails} = props
   const {
     dishName,
     dishPrice,
@@ -16,13 +25,15 @@ const Products = props => {
   } = categoDetails
 
   const isAddon = addonCat.length === 0 ? '' : 'Customizations available'
-  const onIncreaing = () => {
-    addCartItem(categoDetails)
+
+  const onIncreaseQunatity = () => {
+    setQunatity(prevState => prevState + 1)
   }
-  const onDecreasing = () => {
-    if (cartItems.length !== 0) {
-      removeCartIems(categoDetails)
-    }
+  const onDecreseQunatity = () => {
+    setQunatity(prevState => (prevState > 0 ? prevState - 1 : 0))
+  }
+  const onAddTocart = () => {
+    addCartItem({...categoDetails, quantity})
   }
   const qunatyPro = () => {
     const getQunatity = cartItems.find(eachItem => eachItem.dishId === dishId)
@@ -48,13 +59,19 @@ const Products = props => {
     if (dishAvailability === true) {
       return (
         <div className="cart-card">
-          <button className="btn-cart" type="button" onClick={onIncreaing}>
+          <button
+            className="btn-cart"
+            type="button"
+            onClick={onIncreaseQunatity}
+          >
             +
           </button>
-          <p className="btn-number" type="button">
-            {qunatyPro()}
-          </p>
-          <button className="btn-cart" onClick={onDecreasing} type="button">
+          <p className="btn-number">{quantity}</p>
+          <button
+            className="btn-cart"
+            type="button"
+            onClick={onDecreseQunatity}
+          >
             -
           </button>
         </div>
@@ -74,6 +91,11 @@ const Products = props => {
           <p className="list-food-items-description">{dishDescription}</p>
           {renderCartBtn()}
           <p className="list-food-items-Customizations">{isAddon}</p>
+          {quantity > 0 && (
+            <button className="add-cart-btn" onClick={onAddTocart}>
+              Add To Cart
+            </button>
+          )}
         </div>
       </div>
       <div className="sider-img">

@@ -1,5 +1,6 @@
-import {Component} from 'react'
+import {Component, useContext} from 'react'
 import Loader from 'react-loader-spinner'
+import CartContext from '../../Context/CartContext'
 import Header from '../Header'
 import ItemsList from '../ItemsList'
 import Products from '../Products'
@@ -13,11 +14,9 @@ const apiStatusConstants = {
 class FoodList extends Component {
   state = {
     productsList: [],
-    cartItems: [],
     categoriesOption: '',
     apiStatus: apiStatusConstants.initial,
     headerCategory: {},
-    cartLength: 0,
   }
 
   componentDidMount() {
@@ -124,7 +123,7 @@ class FoodList extends Component {
   }
 
   renderProductDetails = () => {
-    const {productsList, categoriesOption, cartItems, cartLength} = this.state
+    const {productsList, categoriesOption} = this.state
     const {categoryDishes} = productsList.find(
       eachCato => eachCato.menuCategoryId === categoriesOption,
     )
@@ -132,14 +131,7 @@ class FoodList extends Component {
     return (
       <ul>
         {categoryDishes.map(products => (
-          <Products
-            categoDetails={products}
-            key={products.dishId}
-            cartItems={cartItems}
-            addCartItem={this.addCartItem}
-            removeCartIems={this.removeCartIems}
-            cartLength={cartLength}
-          />
+          <Products categoDetails={products} key={products.dishId} />
         ))}
       </ul>
     )
@@ -158,7 +150,7 @@ class FoodList extends Component {
     } = this.state
     return (
       <>
-        <Header cartItems={cartItems} headerCategory={headerCategory} />
+        <Header headerCategory={headerCategory} />
         <ul className="unorder-menu-list">
           {productsList.map(eachPro => (
             <ItemsList

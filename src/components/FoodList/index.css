@@ -4,6 +4,11 @@
   justify-content: space-between;
 }
 
+.products-loader-container {
+  align-items: center;
+  margin-left: 50vw;
+}
+
 @media screen and (max-width: 576px) {
   .unorder-menu-list {
     display: flex;
