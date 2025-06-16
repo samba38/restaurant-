@@ -19,13 +19,10 @@ class Cart extends Component {
     }
     const response = await fetch(apiUrl, options)
     const fetchedData = await response.json()
-    const firstUpdate = {
-      branchName: fetchedData[0].branch_name,
-      restaurantId: fetchedData[0].restaurant_id,
-      restaurantImage: fetchedData[0].restaurant_image,
+    const upadtedData = {
       restaurantName: fetchedData[0].restaurant_name,
     }
-    this.setState({headerCategory: firstUpdate})
+    this.setState({headerCategory: upadtedData})
   }
 
   renderEmptyView = () => (

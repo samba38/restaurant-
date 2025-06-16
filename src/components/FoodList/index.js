@@ -17,6 +17,8 @@ class FoodList extends Component {
     categoriesOption: '',
     apiStatus: apiStatusConstants.initial,
     headerCategory: {},
+    qunattity: 0,
+    itemsCart: [],
   }
 
   componentDidMount() {
@@ -76,13 +78,13 @@ class FoodList extends Component {
     </div>
   )
 
-  addCartItem = dish => {
-    const {cartItems} = this.state
+  addCartItemDish = dish => {
+    const {itemsCart} = this.state
 
-    const isAlreadyExist = cartItems.find(item => item.dishId === dish.dishId)
+    const isAlreadyExist = itemsCart.find(item => item.dishId === dish.dishId)
     if (isAlreadyExist) {
       this.setState(prevState => ({
-        cartItems: prevState.cartItems.map(eachCart => {
+        itemsCart: prevState.itemsCart.map(eachCart => {
           if (eachCart.dishId === dish.dishId) {
             const upadetQunatity = eachCart.quantity + 1
             return {
@@ -95,35 +97,46 @@ class FoodList extends Component {
       }))
     } else {
       this.setState(prevState => ({
-        cartItems: [...prevState.cartItems, {...dish, quantity: 1}],
+        itemsCart: [
+          ...prevState.itemsCart,
+          {
+            ...dish,
+            quantity: 1,
+          },
+        ],
       }))
     }
   }
 
-  removeCartIems = dish => {
-    const {cartItems} = this.state
-    const isAlreadyExist = cartItems.find(item => item.dishId === dish.dishId)
-    console.log(isAlreadyExist)
+  removeCartIemsDish = dish => {
+    const {itemsCart} = this.state
+    const isAlreadyExist = itemsCart.find(item => item.dishId === dish.dishId)
+
     if (isAlreadyExist.quantity > 1) {
       this.setState(prevState => ({
-        cartItems: prevState.cartItems.map(eachProduct => {
+        itemsCart: prevState.itemsCart.map(eachProduct => {
           if (eachProduct.dishId === dish.dishId) {
             const upadetQunatity = eachProduct.quantity - 1
-            return {...eachProduct, quantity: upadetQunatity}
+            return {
+              ...eachProduct,
+              quantity: upadetQunatity,
+            }
           }
           return eachProduct
         }),
       }))
     } else {
-      const filterObjects = cartItems.filter(
+      const filterObjects = itemsCart.filter(
         eachPart => eachPart.dishId !== dish.dishId,
       )
-      this.setState({cartItems: filterObjects})
+      this.setState({
+        itemsCart: filterObjects,
+      })
     }
   }
 
   renderProductDetails = () => {
-    const {productsList, categoriesOption} = this.state
+    const {productsList, categoriesOption, qunattity, itemsCart} = this.state
     const {categoryDishes} = productsList.find(
       eachCato => eachCato.menuCategoryId === categoriesOption,
     )
@@ -131,7 +144,14 @@ class FoodList extends Component {
     return (
       <ul>
         {categoryDishes.map(products => (
-          <Products categoDetails={products} key={products.dishId} />
+          <Products
+            categoDetails={products}
+            key={products.dishId}
+            qunattity={qunattity}
+            itemsCart={itemsCart}
+            addCartItemDish={this.addCartItemDish}
+            removeCartIemsDish={this.removeCartIemsDish}
+          />
         ))}
       </ul>
     )

@@ -10,7 +10,13 @@ const Products = props => {
     incrementCartItemQuantity,
     decrementCartItemQuantity,
   } = useContext(CartContext)
-  const {categoDetails} = props
+  const {
+    categoDetails,
+    qunattity,
+    addCartItemDish,
+    removeCartIemsDish,
+    itemsCart,
+  } = props
   const {
     dishName,
     dishPrice,
@@ -27,18 +33,24 @@ const Products = props => {
   const isAddon = addonCat.length === 0 ? '' : 'Customizations available'
 
   const onIncreaseQunatity = () => {
+    addCartItemDish(categoDetails)
     setQunatity(prevState => prevState + 1)
   }
   const onDecreseQunatity = () => {
-    setQunatity(prevState => (prevState > 0 ? prevState - 1 : 0))
+    removeCartIemsDish(categoDetails)
+    setQunatity(prevState =>
+      prevState.quantity > 0 ? prevState.quantity - 1 : 0,
+    )
   }
   const onAddTocart = () => {
     addCartItem({...categoDetails, quantity})
   }
   const qunatyPro = () => {
-    const getQunatity = cartItems.find(eachItem => eachItem.dishId === dishId)
+    const getQunatity = itemsCart.find(eachItem => eachItem.dishId === dishId)
     return getQunatity ? getQunatity.quantity : 0
   }
+  const getQunatityEr = itemsCart.find(eachItem => eachItem.dishId === dishId)
+  const ready = getQunatityEr ? getQunatityEr.quantity : 0
 
   const renderDishType = () => {
     if (dishType > 1) {
@@ -56,6 +68,7 @@ const Products = props => {
   }
 
   const renderCartBtn = () => {
+    console.log(ready)
     if (dishAvailability === true) {
       return (
         <div className="cart-card">
@@ -66,7 +79,7 @@ const Products = props => {
           >
             +
           </button>
-          <p className="btn-number">{quantity}</p>
+          <p className="btn-number">{qunatyPro()}</p>
           <button
             className="btn-cart"
             type="button"
@@ -91,7 +104,7 @@ const Products = props => {
           <p className="list-food-items-description">{dishDescription}</p>
           {renderCartBtn()}
           <p className="list-food-items-Customizations">{isAddon}</p>
-          {quantity > 0 && (
+          {ready > 0 && (
             <button className="add-cart-btn" onClick={onAddTocart}>
               Add To Cart
             </button>

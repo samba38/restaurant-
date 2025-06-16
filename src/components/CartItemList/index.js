@@ -17,6 +17,10 @@ const CartItemList = props => {
     decrementCartItemQuantity(dishId)
   }
 
+  const onRemoveItemCart = () => {
+    removeCartItem(dishId)
+  }
+
   return (
     <li className="cart-items-container">
       <div className="sider-cart-item">
@@ -41,7 +45,9 @@ const CartItemList = props => {
         </button>
       </div>
       <p className="cart-items-paragraph">RS:{dishPrice * quantity}</p>
-      <button className="cart-items-remove-btn">Remove</button>
+      <button className="cart-items-remove-btn" onClick={onRemoveItemCart}>
+        Remove
+      </button>
     </li>
   )
 }
