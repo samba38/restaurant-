@@ -38,9 +38,7 @@ const Products = props => {
   }
   const onDecreseQunatity = () => {
     removeCartIemsDish(categoDetails)
-    setQunatity(prevState =>
-      prevState.quantity > 0 ? prevState.quantity - 1 : 0,
-    )
+    setQunatity(prevState => (prevState > 0 ? prevState - 1 : 0))
   }
   const onAddTocart = () => {
     addCartItem({...categoDetails, quantity})

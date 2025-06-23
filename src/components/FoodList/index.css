@@ -16,3 +16,31 @@
     height: 20px;
   }
 }
+
+.failure-img {
+  height: 300px;
+  width: 600px;
+}
+
+.failure-heading {
+  color: white;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.failure-paragraph {
+  color: white;
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.failure-btn {
+  background-color: #6366f1;
+  color: white;
+  height: 35px;
+  width: 90px;
+  border-width: 0px;
+  border-radius: 10px;
+}
