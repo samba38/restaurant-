@@ -9,14 +9,11 @@ const Products = props => {
     cartItems,
     incrementCartItemQuantity,
     decrementCartItemQuantity,
-  } = useContext(CartContext)
-  const {
-    categoDetails,
-    qunattity,
+    itemsCart,
     addCartItemDish,
     removeCartIemsDish,
-    itemsCart,
-  } = props
+  } = useContext(CartContext)
+  const {categoDetails, qunattity} = props
   const {
     dishName,
     dishPrice,
